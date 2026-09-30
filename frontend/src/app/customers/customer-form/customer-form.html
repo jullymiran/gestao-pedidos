@@ -1,0 +1,14 @@
+<h2>Cadastrar Cliente</h2>
+<form (ngSubmit)="salvar()">
+    <label>
+        Nome:
+        <input type="text" [(ngModel)]="customer.nome" name="nome" required>
+    </label>
+
+    <label>
+        Telefone:
+        <input type="tel" [(ngModel)]="customer.telefone" name="telefone" required>
+    </label>
+
+    <button type="submit">Salvar</button>
+</form>

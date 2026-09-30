@@ -1,0 +1,26 @@
+
+
+<ul>
+@for (product of products; track product.id){
+        <li>
+ 
+            @if (editandoId === product.id) {
+                <input type="text" [(ngModel)]="editData.nome" name="editNome">
+                 <input type="number" [(ngModel)]="editData.preco" name="editPreco">
+                 <button (click)="salvarEdicao(product)">Salvar</button>
+                  <button (click)="cancelarEdicao()">Cancelar</button>
+            }
+            @else{
+
+                {{ product.nome }} - R$ {{ product.preco}}
+
+            - <strong>{{ product.ativo ? 'Ativo' :  'Inativo' }}</strong>
+            <button (click)="toggleAtivo(product)">
+                {{ product.ativo ? 'Desativar' : 'Ativar' }}
+            </button>
+            <button (click)="editar(product)">Editar</button>
+
+            }
+        </li>
+    }
+</ul>

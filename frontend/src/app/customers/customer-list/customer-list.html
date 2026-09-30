@@ -1,0 +1,16 @@
+<ul>
+    @for (customer of customers; track customer.id) {
+        <li>
+            @if (editandoId === customer.id) {
+                <input type="text" [(ngModel)]="editData.nome" name="editNome">
+                <input type="tel" [(ngModel)]="editData.telefone" name="editTelefone">
+                <button (click)="salvarEdicao(customer)">Salvar</button>
+                <button (click)="cancelarEdicao()" >Cancelar</button>
+            }
+            @else {
+                {{ customer.nome }} - {{ customer.telefone }}
+                <button (click)="editar(customer)">Editar</button>
+            }
+        </li>
+    }
+</ul>

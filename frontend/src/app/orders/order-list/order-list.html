@@ -1,0 +1,16 @@
+<ul>
+    @for (order of orders; track order.id) {
+        <li>
+            Pedido #{{ order.id }} - 
+            Cliente: {{ order.customerId}} - 
+            Data: {{ order.createdAt | date: 'dd/MM/yyyy HH:mm' }} - 
+            Total: {{ order.total }} - 
+            Status: 
+           <select [ngModel]="order.status" (ngModelChange)="alterarStatus(order, $event)">
+            @for (status of statusOptions; track status) {
+                <option [ngValue]="status">{{ status }}</option>
+            }
+           </select>
+        </li>
+    }
+</ul>

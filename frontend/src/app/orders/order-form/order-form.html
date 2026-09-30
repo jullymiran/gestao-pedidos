@@ -1,0 +1,44 @@
+<h2>Novo Pedido</h2>
+
+<label>
+    Cliente:
+    <select [(ngModel)]="customerId" name="customer">
+        <option [ngValue]="null">Selecione um cliente</option>
+        @for (customer of customers; track customer.id) {
+            <option [ngValue]="customer.id">{{ customer.nome }}</option>
+        }
+    </select>
+</label>
+
+<div>
+    <label>
+        Produto:
+        <select [(ngModel)]="selectedProductId" name="product">
+            <option [ngValue]="null">Selecione um produto</option>
+            @for (product of products; track product.id) {
+                <option [ngValue]="product.id">{{ product.nome}} - R$ {{ product.preco}}</option>
+            }
+        </select>
+    </label>
+
+    <label>
+        Quantidade:
+        <input type="number" [(ngModel)]="selectedQuantidade" name="quantidade" min="1">
+    </label>
+
+    <button type="button" (click)="adicionarItem()">Adicionar produto</button>
+</div>
+
+<h3>Itens do pedido</h3>
+<ul>
+    @for (item of itensPedido; track $index) {
+        <li>
+            {{ item.nome}} - {{item.quantidade}}x R$ {{ item.preco }} = R$ {{ item.preco * item.quantidade }}
+            <button type="button" (click)="removerItem($index)">Remover</button>
+        </li>
+    }
+</ul>
+
+<p><strong>Total: R$ {{ total }}</strong></p>
+
+<button type="button" (click)="salvar()">Finalizar Pedido</button>
